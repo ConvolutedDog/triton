@@ -10,6 +10,9 @@ add_mlir_doc(TritonAMDGPUDialect TritonAMDGPUDialect dialects/ -gen-dialect-doc 
 add_mlir_doc(TritonAMDGPUOps TritonAMDGPUOps dialects/ -gen-op-doc -dialect=amdg)
 add_public_tablegen_target(TritonAMDGPUTableGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonAMDGPUTableGen)
+
 set(LLVM_TARGET_DEFINITIONS TritonAMDGPUAttrDefs.td)
 mlir_tablegen(TritonAMDGPUEnums.h.inc -gen-enum-decls)
 mlir_tablegen(TritonAMDGPUEnums.cpp.inc -gen-enum-defs)
@@ -21,3 +24,6 @@ mlir_tablegen(TritonAMDGPUOpInterfaces.h.inc -gen-op-interface-decls)
 mlir_tablegen(TritonAMDGPUOpInterfaces.cpp.inc -gen-op-interface-defs)
 
 add_public_tablegen_target(TritonAMDGPUAttrDefsIncGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonAMDGPUAttrDefsIncGen)

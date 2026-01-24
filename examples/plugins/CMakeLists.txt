@@ -2,6 +2,9 @@ set(LLVM_TARGET_DEFINITIONS Passes.td)
 mlir_tablegen(Passes.h.inc -gen-pass-decls -name Plugins)
 add_public_tablegen_target(TritonPluginsIncGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonPluginsIncGen)
+
 llvm_canonicalize_cmake_booleans(
   MLIR_ENABLE_BINDINGS_PYTHON
 )

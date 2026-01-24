@@ -15,3 +15,6 @@ mlir_tablegen(GluonAttrDefs.h.inc -gen-attrdef-decls)
 mlir_tablegen(GluonAttrDefs.cpp.inc -gen-attrdef-defs)
 
 add_public_tablegen_target(GluonTableGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(GluonTableGen)

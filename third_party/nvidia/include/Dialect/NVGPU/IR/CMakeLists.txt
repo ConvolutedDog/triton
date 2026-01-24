@@ -12,7 +12,13 @@ add_mlir_doc(NVGPUDialect NVGPUDialect dialects/ -gen-dialect-doc -dialect=nvg)
 add_mlir_doc(NVGPUOps NVGPUOps dialects/ -gen-op-doc -dialect=nvg)
 add_public_tablegen_target(NVGPUTableGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(NVGPUTableGen)
+
 set(LLVM_TARGET_DEFINITIONS NVGPUAttrDefs.td)
 mlir_tablegen(NVGPUAttrDefs.h.inc -gen-attrdef-decls)
 mlir_tablegen(NVGPUAttrDefs.cpp.inc -gen-attrdef-defs)
 add_public_tablegen_target(NVGPUAttrDefsIncGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(NVGPUAttrDefsIncGen)

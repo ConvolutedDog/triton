@@ -11,6 +11,9 @@ add_mlir_doc(TritonGPUDialect TritonGPUDialect dialects/ -gen-dialect-doc -diale
 add_mlir_doc(TritonGPUOps TritonGPUOps dialects/ -gen-op-doc -dialect=ttg)
 add_public_tablegen_target(TritonGPUTableGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonGPUTableGen)
+
 set(LLVM_TARGET_DEFINITIONS TritonGPUAttrInterfaces.td)
 mlir_tablegen(AttrInterfaces.h.inc -gen-attr-interface-decls)
 mlir_tablegen(AttrInterfaces.cpp.inc -gen-attr-interface-defs)
@@ -22,21 +25,36 @@ set(LLVM_TARGET_DEFINITIONS TritonGPUAttrImpls.td)
 mlir_tablegen(AttrDefs.cpp.inc -gen-attrdef-defs)
 add_public_tablegen_target(TritonGPUAttrDefsIncGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonGPUAttrDefsIncGen)
+
 set(LLVM_TARGET_DEFINITIONS TritonGPUEnums.td)
 mlir_tablegen(OpsEnums.h.inc -gen-enum-decls)
 mlir_tablegen(OpsEnums.cpp.inc -gen-enum-defs)
 add_public_tablegen_target(TritonGPUOpsEnumsIncGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonGPUOpsEnumsIncGen)
+
 set(LLVM_TARGET_DEFINITIONS CGAEncodingAttr.td)
 mlir_tablegen(CGAEncodingAttr.h.inc -gen-attrdef-decls)
 add_public_tablegen_target(TritonGPUCGAAttrIncGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonGPUCGAAttrIncGen)
 
 set(LLVM_TARGET_DEFINITIONS TritonGPUTypeInterfaces.td)
 mlir_tablegen(TypeInterfaces.h.inc -gen-type-interface-decls)
 mlir_tablegen(TypeInterfaces.cpp.inc -gen-type-interface-defs)
 add_public_tablegen_target(TritonGPUTypeInterfacesIncGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonGPUTypeInterfacesIncGen)
+
 set(LLVM_TARGET_DEFINITIONS TritonGPUOpInterfaces.td)
 mlir_tablegen(OpInterfaces.h.inc -gen-op-interface-decls)
 mlir_tablegen(OpInterfaces.cpp.inc -gen-op-interface-defs)
 add_public_tablegen_target(TritonGPUOpInterfacesIncGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonGPUOpInterfacesIncGen)

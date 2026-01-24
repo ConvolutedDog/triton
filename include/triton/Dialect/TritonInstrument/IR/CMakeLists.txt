@@ -15,3 +15,6 @@ mlir_tablegen(Ops.cpp.inc -gen-op-defs)
 add_mlir_doc(TritonInstrumentOps TritonInstrumentOps dialects/ -gen-op-doc -dialect=tti)
 
 add_public_tablegen_target(TritonInstrumentTableGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonInstrumentTableGen)

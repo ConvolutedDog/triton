@@ -11,6 +11,9 @@ add_mlir_doc(NVWSDialect NVWSDialect dialects/ -gen-dialect-doc -dialect=nvws)
 add_mlir_doc(NVWSOps NVWSOps dialects/ -gen-op-doc -dialect=nvws)
 add_public_tablegen_target(NVWSTableGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(NVWSTableGen)
+
 set(LLVM_TARGET_DEFINITIONS NVWSAttrDefs.td)
 mlir_tablegen(NVWSAttrDefs.h.inc -gen-attrdef-decls)
 mlir_tablegen(NVWSAttrDefs.cpp.inc -gen-attrdef-defs)
@@ -22,3 +25,6 @@ mlir_tablegen(NVWSOpInterfaces.h.inc -gen-op-interface-decls)
 mlir_tablegen(NVWSOpInterfaces.cpp.inc -gen-op-interface-defs)
 
 add_public_tablegen_target(NVWSAttrDefsIncGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(NVWSAttrDefsIncGen)

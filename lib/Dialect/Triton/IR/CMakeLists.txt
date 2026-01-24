@@ -2,6 +2,9 @@ set(LLVM_TARGET_DEFINITIONS Canonicalize.td)
 mlir_tablegen(TritonCanonicalize.inc -gen-rewriters)
 add_public_tablegen_target(TritonCanonicalizeIncGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(TritonCanonicalizeIncGen)
+
 add_triton_library(TritonIR
   Dialect.cpp
   DiscardableAttributes.cpp

@@ -9,6 +9,9 @@ add_mlir_doc(ProtonGPUOps ProtonGPUOps dialects/ -gen-op-doc -dialect=proton_gpu
 add_mlir_doc(ProtonGPUDialect ProtonGPUDialect dialects/ -gen-dialect-doc -dialect=proton_gpu)
 add_public_tablegen_target(ProtonGPUTableGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(ProtonGPUTableGen)
+
 set(LLVM_TARGET_DEFINITIONS ProtonGPUAttrDefs.td)
 mlir_tablegen(AttrDefs.h.inc -gen-attrdef-decls)
 mlir_tablegen(AttrDefs.cpp.inc -gen-attrdef-defs)
@@ -17,7 +20,13 @@ mlir_tablegen(OpsEnums.cpp.inc -gen-enum-defs)
 add_mlir_doc(ProtonGPUAttrDefs ProtonGPUAttrDefs dialects/ -gen-attrdef-doc -dialect=proton_gpu)
 add_public_tablegen_target(ProtonGPUAttrDefsIncGen)
 
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(ProtonGPUAttrDefsIncGen)
+
 set(LLVM_TARGET_DEFINITIONS ProtonGPUTypes.td)
 mlir_tablegen(Types.h.inc -gen-typedef-decls)
 mlir_tablegen(Types.cpp.inc -gen-typedef-defs)
 add_public_tablegen_target(ProtonGPUTypesIncGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(ProtonGPUTypesIncGen)

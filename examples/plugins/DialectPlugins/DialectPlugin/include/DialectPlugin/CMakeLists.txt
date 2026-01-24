@@ -25,3 +25,6 @@ mlir_tablegen(Types.cpp.inc -gen-typedef-defs)
 set(LLVM_TARGET_DEFINITIONS DialectPluginPasses.td)
 mlir_tablegen(DialectPluginPasses.h.inc --gen-pass-decls -name=plugin)
 add_public_tablegen_target(MLIRDialectPluginPassesIncGen)
+
+include(${PROJECT_SOURCE_DIR}/cmake/AddTableGenFormat.cmake)
+add_mlir_tablegen_format(MLIRDialectPluginPassesIncGen)
